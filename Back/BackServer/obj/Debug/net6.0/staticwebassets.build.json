@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "KGq20MKYv6hxbNMGPHfC0T5vL9ymLshKk7P8y97n2KE=",
+  "Source": "BackServer",
+  "BasePath": "_content/BackServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
