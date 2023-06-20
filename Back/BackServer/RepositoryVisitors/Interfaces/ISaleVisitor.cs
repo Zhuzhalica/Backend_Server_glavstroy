@@ -7,5 +7,6 @@ namespace BackServer.Repositories
     {
         Task<IEnumerable<Entity.Sale>> GetAllSales();
         Task<IEnumerable<Entity.Product>> GetProductsBySale(string saleTitle);
+        Task<IEnumerable<Entity.Sale>> GetCountSales(int count);
     }
 }

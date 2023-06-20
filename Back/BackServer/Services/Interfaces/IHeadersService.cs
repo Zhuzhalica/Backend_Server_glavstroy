@@ -9,7 +9,9 @@ namespace BackServer.Services.Interfaces
     {
         Task<IEnumerable<HeadingOne>> GetAllHeadingsOne();
         Task<IEnumerable<Entity.HeadingTwo>> GetAllHeadingsTwo();
+        Task<IEnumerable<Entity.HeadingThree>> GetAllHeadingsThree();
         Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOne(string headingOneTitle);
+        Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwoAsync(string headingTwoTitle);
         Task<bool> AddHeadingOne(HeadingOne headingOne);
         Task<bool> AddHeadingTwo(HeadingTwo headingTwo);
         Task<bool> AddHeadingThree(HeadingThree headingThree);

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BackServer.Contexts;
-using DbEntityConverter;
 using Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +19,18 @@ namespace BackServer.Repositories
 
         public async Task<IEnumerable<Entity.Sale>> GetAllSales()
         {
-            return await _context.Sales.Select(x => new Sale(x.Title, x.Description, x.Percent)).ToArrayAsync();
+            return await _context.Sales
+                .Select(x => new Sale(x.Title, x.Description, x.Percent, x.PageLink, x.ImageRef))
+                .ToArrayAsync();
+        }
+        
+        public async Task<IEnumerable<Entity.Sale>> GetCountSales(int count)
+        {
+            return await _context.Sales
+                .OrderByDescending(x=>x.Priority)
+                .Take(count)
+                .Select(x => new Sale(x.Title, x.Description, x.Percent, x.PageLink, x.ImageRef))
+                .ToArrayAsync();
         }
         
         public async Task<IEnumerable<Entity.Product>> GetProductsBySale(string saleTitle)
@@ -29,7 +40,7 @@ namespace BackServer.Repositories
                     (cur, other) => new {other.Title, ProductId = cur.product_id})
                 .Where(x=>x.Title==saleTitle)
                 .Join(_context.Products, cur => cur.ProductId, other=>other.Id,
-                    (cur, other)=> ProductConverter.ToEntity(other))
+                    (cur, other)=> new Product(other.Title))
                 .ToArrayAsync();
         }
     }

@@ -24,14 +24,19 @@ namespace BackServer.Services
             return await _visitor.GetAll();
         }
 
-        public async Task<IEnumerable<Entity.Project>> GetRange(int left, int right)
+        public async Task<IEnumerable<Entity.Project>> GetRange(int pageNumber, int countElements)
         {
-            return await _visitor.GetRange(left, right);
+            return await _visitor.GetRange(pageNumber, countElements);
         }
 
         public async Task<IEnumerable<Entity.Product>> GetProductByProject(string projectTitle)
         {
             return await _visitor.GetProductByProject(projectTitle);
+        }
+
+        public async Task<IEnumerable<Project>> GetProjectByProduct(string productTitle)
+        {
+            return await _visitor.GetProjectByProduct(productTitle);
         }
 
         public async Task<bool> Add(Entity.Project project)

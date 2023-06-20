@@ -25,6 +25,11 @@ namespace BackServer.Services
             return await _visitor.GetAllSales();
         }
 
+        public async Task<IEnumerable<Sale>> GetCountSales(int count)
+        {
+            return await _visitor.GetCountSales(count);
+        }
+
         public async Task<IEnumerable<Product>> GetProductsBySale(string saleTitle)
         {
             return await _visitor.GetProductsBySale(saleTitle);

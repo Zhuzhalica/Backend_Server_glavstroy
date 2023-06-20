@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Net.Http.Json;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Services.Interfaces;
@@ -28,22 +28,29 @@ namespace BackServer.Controllers
             return await _service.GetAll();
         }
         
-        [HttpGet("~/GetProductsByHeadingOne")]
-        public async Task<IEnumerable<Product>> GetProductsByHeadingOne(HeadingOne headingOne)
+        
+        [HttpGet("~/GetAvailableProducts")]
+        public async Task<IEnumerable<Product>> GetAvailableProducts()
         {
-            return await _service.GetByHeadingOne(headingOne);
+            return await _service.GetAvailable();
+        }
+        
+        [HttpGet("~/GetProductsByHeadingOne")]
+        public async Task<IEnumerable<Product>> GetProductsByHeadingOne(string headingOneTitle, [FromQuery]HashSet<Property> requiredProperties, int pageNumber, int countElements)
+        {
+            return await _service.GetByHeadingOne(headingOneTitle, requiredProperties.ToHashSet(), pageNumber, countElements);
         }
         
         [HttpGet("~/GetProductsByHeadingTwo")]
-        public async Task<IEnumerable<Product>> GetProductsByHeadingTwo(HeadingTwo headingTwo)
+        public async Task<IEnumerable<Product>> GetProductsByHeadingTwo(string headingTwoTitle, int pageNumber, int countElements)
         {
-            return await _service.GetByHeadingTwo(headingTwo);
+            return await _service.GetByHeadingTwo(headingTwoTitle, pageNumber, countElements);
         }
         
         [HttpGet("~/GetProductsByHeadingThree")]
-        public async Task<IEnumerable<Product>> GetProductsByHeadingThree(HeadingThree headingThree)
+        public async Task<IEnumerable<Product>> GetProductsByHeadingThree(string headingThreeTitle, int pageNumber, int countElements)
         {
-            return await _service.GetByHeadingThree(headingThree);
+            return await _service.GetByHeadingThree(headingThreeTitle, pageNumber, countElements);
         }
 
         [HttpPost("~/AddProduct")]
@@ -56,10 +63,10 @@ namespace BackServer.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("~/DeleteProduct")]
-        public async Task<StatusCodeResult> DeleteProduct(string productTitle)
+        [HttpDelete("~/DeleteProducts")]
+        public async Task<StatusCodeResult> DeleteProduct(HashSet<string> productTitles)
         {
-            var success = await _service.Delete(productTitle);
+            var success = await _service.Delete(productTitles);
             if (success)
                 return Ok();
             
@@ -70,6 +77,36 @@ namespace BackServer.Controllers
         public async Task<StatusCodeResult> UpdateProduct(string oldProductTitle, Product product)
         {
             var success = await _service.Update(oldProductTitle, product);
+            if (success)
+                return Ok();
+            
+            return BadRequest();
+        }
+        
+        [HttpDelete("~/DeleteHeadingOneProducts")]
+        public async Task<StatusCodeResult> DeleteHeadingOneProducts(string headingOneTitle)
+        {
+            var success = await _service.DeleteHeadingOneProducts(headingOneTitle);
+            if (success)
+                return Ok();
+            
+            return BadRequest();
+        }
+        
+        [HttpDelete("~/DeleteHeadingTwoProducts")]
+        public async Task<StatusCodeResult> DeleteHeadingTwoProducts(string headingTwoTitle)
+        {
+            var success = await _service.DeleteHeadingTwoProducts(headingTwoTitle);
+            if (success)
+                return Ok();
+            
+            return BadRequest();
+        }
+        
+        [HttpDelete("~/DeleteHeadingThreeProducts")]
+        public async Task<StatusCodeResult> DeleteHeadingThreeProducts(string headingThreeTitle)
+        {
+            var success = await _service.DeleteHeadingThreeProducts(headingThreeTitle);
             if (success)
                 return Ok();
             

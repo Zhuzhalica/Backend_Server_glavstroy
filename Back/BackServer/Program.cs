@@ -4,7 +4,6 @@ using BackServer.RepositoryChangers.Implementations;
 using BackServer.RepositoryChangers.Interfaces;
 using BackServer.Services;
 using BackServer.Services.Interfaces;
-using Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,26 +14,33 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<TestContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    });
 });
 
-builder.Services.AddScoped<IHeadersVisitor, HeadersVisitorDb>();
-builder.Services.AddScoped<IProductVisitor, ProductsVisitorDb>();
-builder.Services.AddScoped<IProjectVisitor, ProjectsVisitorDb>();
-builder.Services.AddScoped<IPropertyVisitor, PropertiesVisitorDb>();
-builder.Services.AddScoped<ISaleVisitor, SalesVisitorDb>();
+builder.Services.AddTransient<IHeadersVisitor, HeadersVisitorDb>();
+builder.Services.AddTransient<IProductVisitor, ProductsVisitorDb>();
+builder.Services.AddTransient<IProjectVisitor, ProjectsVisitorDb>();
+builder.Services.AddTransient<IPropertyVisitor, PropertiesVisitorDb>();
+builder.Services.AddTransient<ISaleVisitor, SalesVisitorDb>();
 
-builder.Services.AddScoped<IHeadersChanger, HeadersChangerDb>();
-builder.Services.AddScoped<IProjectChanger, ProjectChangerDb>();
-builder.Services.AddScoped<IProductChanger, ProductChangerDb>();
-builder.Services.AddScoped<ISaleChanger, SaleChangerDb>();
-builder.Services.AddScoped<IPropertyChanger, PropertyChangerDb>();
+builder.Services.AddTransient<IHeadersChanger, HeadersChangerDb>();
+builder.Services.AddTransient<IProjectChanger, ProjectChangerDb>();
+builder.Services.AddTransient<IProductChanger, ProductChangerDb>();
+builder.Services.AddTransient<ISaleChanger, SaleChangerDb>();
+builder.Services.AddTransient<IPropertyChanger, PropertyChangerDb>();
 
-builder.Services.AddScoped<IHeadersService, HeadersService>();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<IPropertyService, PropertyService>();
-builder.Services.AddScoped<ISaleService, SaleService>();
+builder.Services.AddTransient<IHeadersService, HeadersService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IProjectService, ProjectService>();
+builder.Services.AddTransient<IPropertyService, PropertyService>();
+builder.Services.AddTransient<ISaleService, SaleService>();
+
+
 
 // Add services to the container.
 
@@ -45,7 +51,6 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

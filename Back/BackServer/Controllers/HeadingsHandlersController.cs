@@ -31,11 +31,23 @@ namespace BackServer.Controllers
         {
             return await _service.GetAllHeadingsTwo();
         }
+        
+        [HttpGet("~/GetAllHeadingsThree")]
+        public async Task<IEnumerable<Entity.HeadingThree>> GetAllHeadingsThree()
+        {
+            return await _service.GetAllHeadingsThree();
+        }
 
         [HttpGet("~/GetHeadingsTwoByHeadingsOne")]
         public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOne(string headingOneTitle)
         {
             return await _service.GetHeadingsTwoByHeadingsOne(headingOneTitle);
+        }
+        
+        [HttpGet("~/GetHeadingsThreeByHeadingsTwo")]
+        public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwo(string headingTwoTitle)
+        {
+            return await _service.GetHeadingsThreeByHeadingsTwoAsync(headingTwoTitle);
         }
 
         [HttpPost("~/AddHeadingOne")]

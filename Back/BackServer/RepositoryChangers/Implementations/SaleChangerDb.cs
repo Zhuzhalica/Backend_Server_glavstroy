@@ -22,7 +22,7 @@ namespace BackServer.RepositoryChangers.Implementations
         public async Task<bool> Add(Sale sale)
         {
             var saleDb = new DbEntity.Sale()
-                {Title = sale.Title, Description = sale.Description, Percent = sale.Percent};
+                {Title = sale.Title, Description = sale.Description, Percent = sale.Percent, PageLink = sale.PageLink, ImageRef = sale.ImageRef};
 
             await _context.Sales.AddAsync(saleDb);
             await _context.SaveChangesAsync();
@@ -51,6 +51,8 @@ namespace BackServer.RepositoryChangers.Implementations
             oldSale.Title = sale.Title;
             oldSale.Description = sale.Description;
             oldSale.Percent = sale.Percent;
+            oldSale.PageLink = sale.PageLink;
+            oldSale.ImageRef = sale.ImageRef;
 
             await _context.SaveChangesAsync();
             return true;

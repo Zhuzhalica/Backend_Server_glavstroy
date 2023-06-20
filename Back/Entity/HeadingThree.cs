@@ -3,12 +3,15 @@
     public class HeadingThree
     {
         public string Title { get; set; }
+        public string? PageLink { get; set; }
+        public string? ImageRef { get; set; }
         public HeadingTwo HeadingTwo { get; set; }
 
-        public HeadingThree(string title, HeadingTwo headingTwo)
+        public HeadingThree(string title, string? imageRef, string? pageLink)
         {
             Title = title;
-            HeadingTwo = headingTwo;
+            ImageRef = imageRef;
+            PageLink = pageLink;
         }
     }
 }

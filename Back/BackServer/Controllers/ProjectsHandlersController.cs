@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Services.Interfaces;
@@ -30,9 +28,9 @@ namespace BackServer.Controllers
         }
 
         [HttpGet("~/GetRangeProjects")]
-        public async Task<IEnumerable<Project>> GetRangeProjects(int left, int right)
+        public async Task<IEnumerable<Project>> GetRangeProjects(int pageNumber, int countElements)
         {
-            return await _service.GetRange(left, right);
+            return await _service.GetRange(pageNumber, countElements);
         }
 
 
@@ -40,6 +38,12 @@ namespace BackServer.Controllers
         public async Task<IEnumerable<Product>> GetProductsByProject(string projectTitle)
         {
             return await _service.GetProductByProject(projectTitle);
+        }
+        
+        [HttpGet("~/GetProjectByProduct")]
+        public async Task<IEnumerable<Project>> GetProjectByProduct(string productTitle)
+        {
+            return await _service.GetProjectByProduct(productTitle);
         }
 
 

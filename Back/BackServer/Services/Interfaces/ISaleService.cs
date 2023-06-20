@@ -6,6 +6,7 @@ namespace BackServer.Services.Interfaces
     public interface ISaleService
     {
         Task<IEnumerable<Entity.Sale>> GetAllSales();
+        Task<IEnumerable<Entity.Sale>> GetCountSales(int count);
         Task<IEnumerable<Entity.Product>> GetProductsBySale(string saleTitle);
         Task<bool> Add(Entity.Sale sale);
         Task<bool> Delete(string saleTitle);

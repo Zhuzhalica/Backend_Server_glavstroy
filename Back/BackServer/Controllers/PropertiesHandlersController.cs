@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Services.Interfaces;
@@ -27,17 +26,35 @@ namespace BackServer.Controllers
         {
             return await _service.GetAllTitles();
         }
+        
+        [HttpGet("~/GetPropertiesByHeadingOne")]
+        public async Task<IEnumerable<Property>> GetPropertiesByHeadingOne(string headingOneTitle)
+        {
+            return await _service.GetByHeadingOne(headingOneTitle);
+        }
 
         [HttpGet("~/GetPropertiesByHeadingTwo")]
         public async Task<IEnumerable<Property>> GetPropertiesByHeadingTwo(string headingTwoTitle)
         {
             return await _service.GetByHeadingTwo(headingTwoTitle);
         }
-
-        [HttpGet("~/GetPropertiesByProduct")]
-        public async Task<IEnumerable<Property>> GetPropertiesByProduct(string productTitle)
+        
+        [HttpGet("~/GetPropertiesByHeadingThree")]
+        public async Task<IEnumerable<Property>> GetPropertiesByHeadingThree(string headingThreeTitle)
         {
-            return await _service.GetByProduct(productTitle);
+            return await _service.GetByHeadingTwo(headingThreeTitle);
+        }
+
+        [HttpGet("~/GetAllPropertiesByProduct")]
+        public async Task<IEnumerable<Property>> GetAllPropertiesByProduct(string productTitle)
+        {
+            return await _service.GetAllByProduct(productTitle);
+        }
+        
+        [HttpGet("~/GetPriorityPropertiesByProduct")]
+        public async Task<IEnumerable<Property>> GetPriorityPropertiesByProduct(string productTitle)
+        {
+            return await _service.GetPriorityByProduct(productTitle);
         }
 
         [HttpPost("~/AddProperty")]
@@ -59,9 +76,9 @@ namespace BackServer.Controllers
         }
 
         [HttpPost("~/UpdateProperty")]
-        public async Task<StatusCodeResult> Update(string oldPropertyTitle, Property property)
+        public async Task<StatusCodeResult> Update([FromQuery] Property oldProperty, Property property)
         {
-            var success = await _service.Update(oldPropertyTitle, property);
+            var success = await _service.Update(oldProperty, property);
             if (success)
                 return Ok();
             return BadRequest();
@@ -109,10 +126,10 @@ namespace BackServer.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("~/DeleteAllValuesProductProperty")]
-        public async Task<StatusCodeResult> DeleteAllValuesProductProperty(string productTitle, string propertyTitle)
+        [HttpDelete("~/DeleteAllPropertyValues")]
+        public async Task<StatusCodeResult> DeleteAllPropertyValues(string propertyTitle)
         {
-            var success = await _service.DeleteAllValuesProductProperty(productTitle, propertyTitle);
+            var success = await _service.DeleteAllPropertyValues(propertyTitle);
             if (success)
                 return Ok();
             return BadRequest();

@@ -6,8 +6,6 @@ namespace  DbEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }
-
-        public List<ProductProperty> ProductProperties { get; set; }
-        public List<HeadingThree> HeadingsThree { get; set; }
+        public List<PropertyValues> PropertyValues { get; set; }
     }
 }

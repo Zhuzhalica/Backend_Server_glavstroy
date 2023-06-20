@@ -1,0 +1,12 @@
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\bin\Debug\net6.0\DbExtensions.deps.json
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\bin\Debug\net6.0\DbExtensions.dll
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\bin\Debug\net6.0\DbExtensions.pdb
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.csproj.AssemblyReference.cache
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.AssemblyInfoInputs.cache
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.AssemblyInfo.cs
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.csproj.CoreCompileInputs.cache
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.dll
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\refint\DbExtensions.dll
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\DbExtensions.pdb
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\DbExtensions\obj\Debug\net6.0\ref\DbExtensions.dll

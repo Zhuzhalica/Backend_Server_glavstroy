@@ -20,6 +20,7 @@
       <ProjectReference Include="..\DbEntityConverter\DbEntityConverter.csproj" />
       <ProjectReference Include="..\DbEntity\DbEntity.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
+      <ProjectReference Include="..\NpgsqlDbExtensions\NpgsqlDbExtensions.csproj" />
     </ItemGroup>
 
 </Project>

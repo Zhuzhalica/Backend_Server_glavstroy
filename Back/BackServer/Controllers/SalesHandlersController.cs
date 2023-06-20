@@ -27,6 +27,12 @@ namespace BackServer.Controllers
             return await _service.GetAllSales();
         }
         
+        [HttpGet("~/GetCountSales")]
+        public async Task<IEnumerable<Sale>> GetCountSales(int count)
+        {
+            return await _service.GetCountSales(count);
+        }
+        
         [HttpGet("~/GetProductsBySale")]
         public async Task<IEnumerable<Product>> GetProductsBySale(string saleTitle)
         {

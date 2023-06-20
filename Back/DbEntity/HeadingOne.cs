@@ -7,7 +7,8 @@ namespace DbEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string? PageLink { get; set; }
         public List<HeadingTwo> HeadingsTwo { get; set; }
-        public List<Product> Products { get; set; }
+        public List<ProductFamily> ProductFamilies { get; set; }
     }
 }

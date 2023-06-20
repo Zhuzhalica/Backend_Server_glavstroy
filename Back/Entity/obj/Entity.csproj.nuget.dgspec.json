@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\Entity\\Entity.csproj": {}
+    "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\Entity\\Entity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\Entity\\Entity.csproj": {
+    "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\portu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\Entity\\obj\\",
+        "projectPath": "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\ilyal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\portu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ilyal\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

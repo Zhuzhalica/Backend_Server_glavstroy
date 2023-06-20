@@ -8,6 +8,8 @@ namespace BackServer.Repositories
     {
         Task<IEnumerable<HeadingOne>> GetAllHeadingsOneAsync();
         Task<IEnumerable<HeadingTwo>> GetAllHeadingsTwoAsync();
+        Task<IEnumerable<Entity.HeadingThree>> GetAllHeadingsThree();
         Task<IEnumerable<HeadingTwo>> GetHeadingsTwoByHeadingsOneAsync(string headingOneTitle);
+        Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwoAsync(string headingTwoTitle);
     }
 }

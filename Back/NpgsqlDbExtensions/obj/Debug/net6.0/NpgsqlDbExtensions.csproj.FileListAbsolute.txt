@@ -1,0 +1,12 @@
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\bin\Debug\net6.0\NpgsqlDbExtensions.deps.json
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\bin\Debug\net6.0\NpgsqlDbExtensions.dll
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\bin\Debug\net6.0\NpgsqlDbExtensions.pdb
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.csproj.AssemblyReference.cache
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.AssemblyInfoInputs.cache
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.AssemblyInfo.cs
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.csproj.CoreCompileInputs.cache
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.dll
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\refint\NpgsqlDbExtensions.dll
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\NpgsqlDbExtensions.pdb
+C:\Users\portu\Desktop\GitHub\Vilka-German\Back\NpgsqlDbExtensions\obj\Debug\net6.0\ref\NpgsqlDbExtensions.dll

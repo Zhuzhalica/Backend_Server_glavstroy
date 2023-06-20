@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\DbEntity\\DbEntity.csproj": {}
+    "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\DbEntity\\DbEntity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\DbEntity\\DbEntity.csproj": {
+    "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\DbEntity\\DbEntity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\DbEntity\\DbEntity.csproj",
+        "projectUniqueName": "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\DbEntity\\DbEntity.csproj",
         "projectName": "DbEntity",
-        "projectPath": "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\DbEntity\\DbEntity.csproj",
-        "packagesPath": "C:\\Users\\portu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\portu\\Desktop\\GitHub\\Backend_Server_glavstroy\\Back\\DbEntity\\obj\\",
+        "projectPath": "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\DbEntity\\DbEntity.csproj",
+        "packagesPath": "C:\\Users\\ilyal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ilyal\\Documents\\GitHub\\Vilka-German\\Back\\DbEntity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\portu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ilyal\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,16 +39,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.0-preview.3.23174.2, )"
-            },
-            "Microsoft.EntityFrameworkCore.Abstractions": {
-              "target": "Package",
-              "version": "[8.0.0-preview.3.23174.2, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -65,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

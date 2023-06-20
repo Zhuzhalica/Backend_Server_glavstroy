@@ -44,9 +44,12 @@ namespace BackServer.RepositoryChangers.Implementations
                 await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingThree.HeadingTwo.Title);
             if (headingTwo == null) return false;
 
-            var property = new Property() {Title = headingThree.Title};
-            await _context.Properties.AddAsync(property);
-            var newHeadingThree = new HeadingThree() {Property = property, HeadingTwo = headingTwo};
+            var property =
+                await _context.PropertyValues.FirstOrDefaultAsync(x => x.PropertyValue == headingThree.Title);
+            if (property == null)
+                return false;
+
+            var newHeadingThree = new HeadingThree() {PropertyValues = property, HeadingTwo = headingTwo};
             await _context.HeadingsThree.AddAsync(newHeadingThree);
             await _context.SaveChangesAsync();
             return true;
@@ -58,15 +61,18 @@ namespace BackServer.RepositoryChangers.Implementations
             if (heading == null)
                 return false;
 
-            var products = _context.Products.Where(x => x.HeadingOne == heading).ToHashSet();
-            RemoveProducts(products);
-            
-            
+            var productFamilies = _context.ProductFamilies
+                .Where(x => x.HeadingOne == heading)
+                .Select(x => x.Id)
+                .ToHashSet();
+            RemoveProducts(productFamilies);
+
             var headingsTwo = _context.HeadingsTwo.Where(x => x.HeadingOne == heading).ToHashSet();
-            var headingsThree =await _context.HeadingsThree.Where(x => headingsTwo.Contains(x.HeadingTwo)).ToArrayAsync();
+            var headingsThree =
+                await _context.HeadingsThree.Where(x => headingsTwo.Contains(x.HeadingTwo)).ToArrayAsync();
             _context.HeadingsThree.RemoveRange(headingsThree);
             _context.HeadingsTwo.RemoveRange(headingsTwo);
-            
+
             _context.HeadingsOne.Remove(heading);
             await _context.SaveChangesAsync();
             return true;
@@ -77,11 +83,15 @@ namespace BackServer.RepositoryChangers.Implementations
             var heading = await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == title);
             if (heading == null)
                 return false;
+
+            var productFamilies = _context.ProductFamilies
+                .Where(x => x.HeadingTwo == heading)
+                .Select(x => x.Id)
+                .ToHashSet();
             
-            var products = _context.Products.Where(x => x.HeadingTwo == heading).ToHashSet();
-            RemoveProducts(products);
-            
-            var headingsThree =await _context.HeadingsThree.Where(x => x.HeadingTwo == heading).ToArrayAsync();
+            RemoveProducts(productFamilies);
+
+            var headingsThree = await _context.HeadingsThree.Where(x => x.HeadingTwo == heading).ToArrayAsync();
             _context.HeadingsThree.RemoveRange(headingsThree);
 
             _context.HeadingsTwo.Remove(heading);
@@ -91,12 +101,10 @@ namespace BackServer.RepositoryChangers.Implementations
 
         public async Task<bool> DeleteHeadingThree(string title)
         {
-            var heading = await _context.HeadingsThree.FirstOrDefaultAsync(x => x.Property.Title == title);
+            var heading =
+                await _context.HeadingsThree.FirstOrDefaultAsync(x => x.PropertyValues.PropertyValue == title);
             if (heading == null)
                 return false;
-            
-            var products = _context.Products.Where(x => x.HeadingThree == heading).ToHashSet();
-            RemoveProducts(products);
 
             _context.HeadingsThree.Remove(heading);
             await _context.SaveChangesAsync();
@@ -138,15 +146,17 @@ namespace BackServer.RepositoryChangers.Implementations
         public async Task<bool> UpdateHeadingThree(string oldHeadingThreeTitle, Entity.HeadingThree headingThree)
         {
             var oldHeadingThree =
-                await _context.HeadingsThree.FirstOrDefaultAsync(x => x.Property.Title == oldHeadingThreeTitle);
+                await _context.HeadingsThree.FirstOrDefaultAsync(x =>
+                    x.PropertyValues.PropertyValue == oldHeadingThreeTitle);
             if (oldHeadingThree == null)
                 return false;
 
-            if (oldHeadingThree.Property.Title != headingThree.Title)
+            if (oldHeadingThree.PropertyValues.PropertyValue != headingThree.Title)
             {
-                var newProperty = await _context.Properties.FirstOrDefaultAsync(x => x.Title == headingThree.Title);
-                if (newProperty == null) return false;
-                oldHeadingThree.Property = newProperty;
+                var newPropertyValue =
+                    await _context.PropertyValues.FirstOrDefaultAsync(x => x.PropertyValue == headingThree.Title);
+                if (newPropertyValue == null) return false;
+                oldHeadingThree.PropertyValues = newPropertyValue;
             }
 
             if (oldHeadingThree.HeadingTwo.Title != headingThree.HeadingTwo.Title)
@@ -163,16 +173,17 @@ namespace BackServer.RepositoryChangers.Implementations
             return true;
         }
 
-        private async void RemoveProducts(HashSet<Product> products)
+        private async void RemoveProducts(HashSet<int> productFamilyIds)
         {
+            var products = _context.Products.Where(x => productFamilyIds.Contains(x.product_family_id)).ToHashSet();
             var sales = await _context.SaleProducts.Where(x => products.Contains(x.Product)).ToArrayAsync();
             var projects = await _context.ProjectMaterials.Where(x => products.Contains(x.Product)).ToArrayAsync();
             var properties = await _context.ProductProperties.Where(x => products.Contains(x.Product)).ToArrayAsync();
-            
+
             _context.SaleProducts.RemoveRange(sales);
             _context.ProjectMaterials.RemoveRange(projects);
             _context.ProductProperties.RemoveRange(properties);
-            
+
             _context.Products.RemoveRange(products);
         }
     }

@@ -27,10 +27,20 @@ namespace BackServer.Services
         {
             return await _visitor.GetAllHeadingsTwoAsync();
         }
+        
+        public async Task<IEnumerable<Entity.HeadingThree>> GetAllHeadingsThree()
+        {
+            return await _visitor.GetAllHeadingsThree();
+        }
 
         public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOne(string headingOneTitle)
         {
             return await _visitor.GetHeadingsTwoByHeadingsOneAsync(headingOneTitle);
+        }
+
+        public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwoAsync(string headingTwoTitle)
+        {
+            return await _visitor.GetHeadingsThreeByHeadingsTwoAsync(headingTwoTitle);
         }
 
         public async Task<bool> AddHeadingOne(HeadingOne headingOne)
